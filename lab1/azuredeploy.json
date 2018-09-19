@@ -4,7 +4,7 @@
     "parameters": {
         "storageAccountPrefix": {
             "type": "string",
-            "defaultValue": "richeneystg",
+            "defaultValue": "fileofsole",
             "maxLength": 11,
             "metadata": {
                 "description": "Prefix for the storage account name"
@@ -21,6 +21,17 @@
             "metadata": {
                 "description": "SKU for the storage account"
             }
+        },
+        "accessTier": {
+            "type": "string",
+            "defaultValue": "Cool",
+            "allowedValues": [
+                "Hot",
+                "Cool"
+            ],
+            "metadata": {
+                "description": "Access Tier"
+            }
         }
     },
     "variables": {
@@ -36,7 +47,8 @@
                 "displayName": "[variables('storageAccount')]"
             },
             "properties": {
-                "accountType": "[parameters('accountType')]"
+                "accountType": "[parameters('accountType')]",
+                "accessTier": "[parameters('accessTier')]"
             }
         }
     ],
